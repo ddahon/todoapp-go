@@ -1,11 +1,14 @@
 package home
 
 import "github.com/ddahon/go-todoapp/views/layout"
+import "github.com/ddahon/go-todoapp/views/components"
 
 templ Home() {
 	@layout.Base() {
-		<h1 class="text-3xl font-bold underline">
-			Hello world!
-		</h1>
+		<div class="grid grid-rows-2 p-10">
+			<div class="flex grow justify-center">
+				@components.Input()
+			</div>
+		</div>
 	}
 }

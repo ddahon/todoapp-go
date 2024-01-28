@@ -14,5 +14,9 @@ func main() {
 		return render(c, home.Home())
 	})
 
+	app.Post("/add", func(c *fiber.Ctx) error {
+		return render(c, home.Home())
+	})
+
 	log.Fatal(app.Listen(":3000"))
 }
