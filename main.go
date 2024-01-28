@@ -11,7 +11,7 @@ func main() {
 
 	app := fiber.New()
 	app.Get("/", func(c *fiber.Ctx) error {
-		return render(c, views.Hello("caca"))
+		return render(c, views.Home())
 	})
 
 	log.Fatal(app.Listen(":3000"))
