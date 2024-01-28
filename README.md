@@ -7,5 +7,3 @@ todo app using Go + templ + HTMX
 ```bash
 make
 ```
-
-Hot reload is done with air
