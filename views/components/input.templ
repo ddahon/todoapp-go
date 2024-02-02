@@ -1,13 +1,17 @@
 package components
 
 templ Input() {
-	<div class="w-1/2">
-		<label for="OrderNotes" class="sr-only">Add task</label>
-		<div
+	<div class="w-full">
+		<label for="description" class="sr-only">Add task</label>
+		<form
+			id="main-form"
 			class="overflow-hidden rounded-lg border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+			hx-post="/add"
+			hx-on::after-request="if (event.detail.successful) { this.reset() }"
 		>
 			<textarea
-				id="OrderNotes"
+				id="description"
+				name="description"
 				class="w-full resize-none border-none align-top focus:ring-0 sm:text-sm"
 				rows="4"
 				placeholder="What's on your mind?"
@@ -16,17 +20,17 @@ templ Input() {
 				<button
 					type="button"
 					class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600"
+					hx-on:click="document.getElementById('main-form').reset()"
 				>
 					Clear
 				</button>
 				<button
-					type="button"
+					type="submit"
 					class="rounded bg-green-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-green-800"
-					hx-post="/add"
 				>
 					Add
 				</button>
 			</div>
-		</div>
+		</form>
 	</div>
 }

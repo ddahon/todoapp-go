@@ -2,12 +2,16 @@ package home
 
 import "github.com/ddahon/go-todoapp/views/layout"
 import "github.com/ddahon/go-todoapp/views/components"
+import "github.com/ddahon/go-todoapp/models"
 
-templ Home() {
+templ Home(todos []models.Todo) {
 	@layout.Base() {
-		<div class="grid grid-rows-2 p-10">
-			<div class="flex grow justify-center">
+		<div class="p-10 mx-80">
+			<div class="" hx-swap="innerHTML" hx-target="#todolist">
 				@components.Input()
+			</div>
+			<div id="todolist">
+				@components.List(todos)
 			</div>
 		</div>
 	}

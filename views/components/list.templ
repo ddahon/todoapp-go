@@ -1,0 +1,13 @@
+package components
+
+import "github.com/ddahon/go-todoapp/models"
+
+templ List(todos []models.Todo) {
+	<div>
+		<ul>
+			for _, todo := range todos {
+				<li>{ todo.Description }</li>
+			}
+		</ul>
+	</div>
+}
