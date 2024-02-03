@@ -6,7 +6,7 @@ templ List(todos []models.Todo) {
 	<div>
 		<ul>
 			for _, todo := range todos {
-				<li>{ todo.Description }</li>
+				@TodoElement(todo)
 			}
 		</ul>
 	</div>

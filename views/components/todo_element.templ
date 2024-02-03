@@ -1,0 +1,13 @@
+package components
+
+import "github.com/ddahon/go-todoapp/models"
+import "strconv"
+
+templ TodoElement(todo models.Todo) {
+	<li>
+		<div class="flex flex-row space-x-7 items-center">
+			<input hx-post="/delete" hx-trigger="change" hx-swap="innerHTML" hx-target="#todolist" name="id" value={ strconv.Itoa(int(todo.Id)) } type="checkbox"/>
+			<p>{ todo.Description }</p>
+		</div>
+	</li>
+}
