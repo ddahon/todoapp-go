@@ -7,6 +7,7 @@ templ Input() {
 			id="main-form"
 			class="overflow-hidden rounded-lg border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
 			hx-post="/add"
+			hx-trigger="submit, keyup[ctrlKey&&keyCode==13]"
 			hx-on::after-request="if (event.detail.successful) { this.reset() }"
 		>
 			<textarea
@@ -20,7 +21,6 @@ templ Input() {
 				<button
 					type="button"
 					class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600"
-					hx-on:click="document.getElementById('main-form').reset()"
 				>
 					Clear
 				</button>
