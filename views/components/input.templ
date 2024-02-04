@@ -1,7 +1,22 @@
 package components
 
 templ Input() {
-	<div class="w-full">
+	<script>
+	document.addEventListener('alpine:init', () => {
+        Alpine.data("textarea", () => ({
+            focusShortcut(event, textarea) { 
+							if (event.key == "Escape") {
+								console.log("escape textarea!!")
+								textarea.blur()
+							}
+							else if (event.target.type != "textarea" && event.key == "a") { 
+								console.log("go to textarea!!!")
+								textarea.focus()
+							}
+        }}))
+    })
+	</script>
+	<div class="w-full" x-data>
 		<label for="description" class="sr-only">Add task</label>
 		<form
 			id="main-form"
@@ -16,6 +31,8 @@ templ Input() {
 				class="w-full resize-none border-none align-top focus:ring-0 sm:text-sm"
 				rows="4"
 				placeholder="What's on your mind?"
+				x-data="textarea"
+				x-on:keyup.window="focusShortcut($event, $el)"
 			></textarea>
 			<div class="flex items-center justify-end gap-2 bg-white p-3">
 				<button
